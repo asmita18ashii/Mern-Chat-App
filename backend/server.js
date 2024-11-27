@@ -17,7 +17,7 @@ dotenv.config()
 connectDB()
 
 app.use(cors({
-    origin: 'http://localhost:3000', // Your React app's URL
+    origin: 'https://letschatndtalk.netlify.app', // Your React app's URL
     credentials: true, // Allow cookies if needed
 }))
 app.use(express.json())
@@ -62,7 +62,7 @@ const io = require('socket.io')(
     server, {
     pingTimeout: 60000,
     cors: {
-        origin: 'http://localhost:3000', // Allow your frontend's origin
+        origin: 'https://letschatndtalk.netlify.app', // Allow your frontend's origin
         methods: ['GET', 'POST'],       // Allowed methods
         credentials: true,              // Allow cookies
     }
