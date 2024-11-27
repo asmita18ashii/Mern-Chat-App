@@ -1,12 +1,12 @@
 {
-  "name": "talk-a-tive",
+  "name": "Let's Share",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
     "start": "nodemon backend/server.js",
     "server": "nodemon backend/server.js",
-    "build": "npm install --legacy-peer-deps && npm install --legacy-peer-deps --prefix frontend && npm run build --prefix frontend"
+    "build": "npm install --legacy-peer-deps"
   },
   "author": "",
   "license": "ISC",

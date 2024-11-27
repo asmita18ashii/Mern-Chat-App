@@ -56,7 +56,7 @@ function Homepage() {
         borderWidth="2px"
       >
         <Text fontSize="5xl" fontFamily="fantasy" fontWeight="500" color="rgb(111, 50, 111)" fontStyle="Bold">
-          Talk-A-Tive
+          Let's Share
         </Text>
       </Box>
       <Box display="flex"
