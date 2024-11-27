@@ -16,10 +16,13 @@ dotenv.config()
 
 connectDB()
 
-app.use(cors())
+app.use(cors({
+    origin: 'http://localhost:3000', // Your React app's URL
+    credentials: true, // Allow cookies if needed
+}))
 app.use(express.json())
 
-app.use('/user/', userRoute)
+app.use('/user', userRoute)
 app.use('/chats', chatRoute)
 app.use('/messages', messageRoute)
 
@@ -35,28 +38,19 @@ const port = process.env.PORT
 
 const _dirName1 = path.resolve();
 if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(_dirName1,"/frontend/build")))
+    app.use(express.static(path.join(_dirName1, "/frontend/build")))
 
-    app.get("*",(req,res)=>{
-        res.sendFile(path.resolve(_dirName1,"frontend","build",'index.html'))
+    app.get("*", (req, res) => {
+        res.sendFile(path.resolve(_dirName1, "frontend", "build", 'index.html'))
     })
 } else {
     app.get('/', (req, res) => {
-        res.send('api is running')
+        res.sendStatus(200).send('api is running')
     })
 }
 
 /**............................Deployment......................... */
 
-
-// app.get('/chats',(req,res)=>{
-//     res.send(chats)
-// })
-
-// app.get('/chats/:id',(req,res)=>{
-//    const singleChat= chats.find((chat)=>chat._id===req.params.id)
-//    res.send(singleChat)
-// })
 
 
 
@@ -68,16 +62,18 @@ const io = require('socket.io')(
     server, {
     pingTimeout: 60000,
     cors: {
-        origin: "http://localhost:3000"
-    },
+        origin: 'http://localhost:3000', // Allow your frontend's origin
+        methods: ['GET', 'POST'],       // Allowed methods
+        credentials: true,              // Allow cookies
+    }
 }
 )
 
 io.on('connection', (socket) => {
-    console.log("connected to socket.io");
 
     socket.on("setup", (userData) => {
         socket.join(userData._id);
+        console.log(userData._id)
         socket.emit('connected')
     });
 
@@ -88,6 +84,7 @@ io.on('connection', (socket) => {
 
     socket.on("typing", (room) =>
         socket.in(room).emit("typing")
+
     )
 
     socket.on("stop typing", (room) =>

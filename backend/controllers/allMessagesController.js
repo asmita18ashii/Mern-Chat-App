@@ -12,8 +12,7 @@ const getMessages=asyncHandler(async(req,res)=>{
 
 
  }catch(error){
-
-    res.sendStatus(400)
+    res.status(400)
     return new Error(error?.message)
 
  }
