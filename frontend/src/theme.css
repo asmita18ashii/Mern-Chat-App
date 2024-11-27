@@ -1,0 +1,14 @@
+:root {
+    --screen-background:black;
+    --primary-color: #87CEEB;
+    --secondary-color: #FFD700;
+    --accent-color: #ff7a63;
+    --box-background:#f83838;
+    --box-background-color: #FFFACD;
+    --input-background-color: #E6E6FA;
+    --text-color:rgb(111, 50, 111);
+    --border-color: rgb(111, 50, 111);
+    --hover-color: #4682B4;
+    --active-color: rgb(111, 50, 111);
+    --shadow-color: rgba(153, 155, 155, 0.3);
+}
