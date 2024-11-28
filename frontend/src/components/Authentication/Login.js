@@ -47,17 +47,30 @@ const Login = () => {
         config
       );
 
-      toast({
-        title: "Login Successful",
-        status: "success",
-        duration: 5000,
-        isClosable: true,
-        position: "bottom",
-      });
-      setUser(data);
-      localStorage.setItem("userInfo", JSON.stringify(data));
-      setLoading(false);
-      history.push("/chats");
+      if (data) {
+        toast({
+          title: "Login Successful",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+          position: "bottom",
+        });
+        setUser(data);
+        localStorage.setItem("userInfo", JSON.stringify(data));
+        setLoading(false);
+        history.push("/chats");
+      }
+      else {
+        toast({
+          title: "Error Occured!",
+          description: "Something went wrong",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+          position: "bottom",
+        });
+        setLoading(false);
+      }
     } catch (error) {
       toast({
         title: "Error Occured!",
