@@ -53,7 +53,7 @@ const authUser = asyncHandler(async (req, res) => {
             token: generateToken(user._id)
         });
     } else {
-        req.status(400)
+        res.status(400)
         throw new Error('User not Found')
     }
 })
