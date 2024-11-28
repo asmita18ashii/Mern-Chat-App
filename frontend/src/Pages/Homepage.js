@@ -60,7 +60,7 @@ function Homepage() {
             autoplay
             loop
             mode="normal"
-            src={{loadingImg}} style={{ width: "300px", height: "300px" }}
+            src={loadingImg} style={{ width: "300px", height: "300px" }}
           ></Player>
         </Text>
       </Box>
