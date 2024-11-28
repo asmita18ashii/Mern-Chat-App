@@ -26,7 +26,10 @@ app.use('/user', userRoute)
 app.use('/chats', chatRoute)
 app.use('/messages', messageRoute)
 
-
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something went wrong!');
+});
 
 
 app.use(notFound)
@@ -36,18 +39,18 @@ const port = process.env.PORT
 
 /**............................Deployment......................... */
 
-const _dirName1 = path.resolve();
-if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(_dirName1, "/frontend/build")))
+// const _dirName1 = path.resolve();
+// if (process.env.NODE_ENV === "production") {
+//     app.use(express.static(path.join(_dirName1, "./frontend/build")))
 
-    app.get("*", (req, res) => {
-        res.sendFile(path.resolve(_dirName1, "frontend", "build", 'index.html'))
-    })
-} else {
-    app.get('/', (req, res) => {
-        res.sendStatus(200).send('api is running')
-    })
-}
+//     app.get("*", (req, res) => {
+//         res.sendFile(path.resolve(_dirName1, "./frontend", "build", 'index.html'))
+//     })
+// } else {
+//     app.get('/', (req, res) => {
+//         res.sendStatus(200).send('api is running')
+//     })
+// }
 
 /**............................Deployment......................... */
 
