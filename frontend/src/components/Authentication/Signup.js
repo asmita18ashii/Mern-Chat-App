@@ -10,6 +10,8 @@ const baseURL = process.env.REACT_APP_BASE_URL;
 
 const Signup = () => {
   const [show, setShow] = useState(false);
+  const [show2, setShow2] = useState(false);
+
   const handleClick = () => setShow(!show);
   const toast = useToast();
   const history = useHistory();
@@ -51,7 +53,7 @@ const Signup = () => {
         },
       };
       const { data } = await axios.post(
-       `${baseURL}/user`,
+        `${baseURL}/user`,
         {
           name,
           email,
@@ -143,6 +145,14 @@ const Signup = () => {
           type="email"
           placeholder="Enter Your Email Address"
           onChange={(e) => setEmail(e.target.value)}
+          _focus={{
+            shadow:"none",
+            boxShadow:"none"
+          }}
+          _active={{
+            shadow:"none",
+            boxShadow:"none"
+          }}
         />
       </FormControl>
       <FormControl id="password" isRequired>
@@ -164,13 +174,13 @@ const Signup = () => {
         <FormLabel>Confirm Password</FormLabel>
         <InputGroup size="md">
           <Input
-            type={show ? "text" : "password"}
+            type={show2 ? "text" : "password"}
             placeholder="Confirm password"
             onChange={(e) => setConfirmpassword(e.target.value)}
           />
           <InputRightElement width="4.5rem">
-            <Button h="1.75rem" size="sm" onClick={handleClick}>
-              {show ? "Hide" : "Show"}
+            <Button h="1.75rem" size="sm" onClick={() => setShow2(!show2)}>
+              {show2 ? "Hide" : "Show"}
             </Button>
           </InputRightElement>
         </InputGroup>
@@ -179,27 +189,25 @@ const Signup = () => {
         <FormLabel>Upload your Picture</FormLabel>
         <Input
           type="file"
-          p={1.5}
+          p={0.9}
           accept="image/*"
           onChange={(e) => postDetails(e.target.files[0])}
         />
       </FormControl>
       <Button
         backgroundColor="black"
-        borderColor="rgb(111, 50, 111)"
-        color="rgb(111, 50, 111)"
+        borderColor="rgb(6, 36, 101)"
+        color="white"
         borderWidth="2px"
         width="100%"
         style={{ marginTop: 15 }}
         onClick={submitHandler}
         isLoading={picLoading}
         _hover={{
-          bg: "rgb(111, 50, 111)", // Background color on hover
-          color: "black", // Text color on hover
+          bg: "rgb(6, 36, 101)", // Background color on hover
         }}
         _active={{
-          bg: "rgb(111, 50, 111)", // Background color on hover
-          color: "black", // Text color when active
+          bg: "rgb(6, 36, 101)", // Background color on hover
         }}
       >
         Sign Up

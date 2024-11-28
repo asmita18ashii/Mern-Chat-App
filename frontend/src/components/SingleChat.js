@@ -223,7 +223,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             >
               {istyping ? (
                 <div>
-                  loading
+                  <img src="https://app.lottiefiles.com/animation/4f892c67-fc5e-449a-9a9a-926d53283cc7" alt="loading animtion"/>
                 </div>
               ) : (
                 <></>

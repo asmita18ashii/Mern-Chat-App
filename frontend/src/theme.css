@@ -6,9 +6,9 @@
     --box-background:#f83838;
     --box-background-color: #FFFACD;
     --input-background-color: #E6E6FA;
-    --text-color:rgb(111, 50, 111);
-    --border-color: rgb(111, 50, 111);
+    --text-color:white;
+    --border-color: rgb(6, 36, 101);
     --hover-color: #4682B4;
-    --active-color: rgb(111, 50, 111);
+    --active-color: white;
     --shadow-color: rgba(153, 155, 155, 0.3);
 }

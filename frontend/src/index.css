@@ -20,8 +20,11 @@ label,
 input {
   color: var(--text-color) !important;
 }
+input:focus{
+  outline: none !important;
+}
 
 button:hover,button:active{
-    background-color: "rgb(111, 50, 111)" !important;
+    background-color: "rgb(6, 36, 101)" !important;
     color: "black" !important;
 }

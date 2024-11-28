@@ -128,20 +128,18 @@ const ResetPassword = ({ onCompletion }) => {
 
             <Button
                 backgroundColor="black"
-                borderColor="rgb(111, 50, 111)"
-                color="rgb(111, 50, 111)"
+                borderColor="rgb(6, 36, 101)"
+                color="white"
                 borderWidth="2px"
                 width="100%"
                 style={{ marginTop: 15 }}
                 onClick={submitHandler}
                 isLoading={loading}
                 _hover={{
-                    bg: "rgb(111, 50, 111)", // Background color on hover
-                    color: "black", // Text color on hover
+                    bg: "rgb(6, 36, 101)", // Background color on hover
                 }}
                 _active={{
-                    bg: "rgb(111, 50, 111)", // Background color on hover
-                    color: "black", // Text color when active
+                    bg: "rgb(6, 36, 101)", // Background color on hover
                 }}
             >
                 {loading ? 'Loading...' : 'Submit'}

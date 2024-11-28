@@ -9,8 +9,8 @@ import Login from "../components/Authentication/Login";
 import Signup from "../components/Authentication/Signup";
 import './Homepage.css';
 import ResetPass from "../components/Authentication/ResetPassword";
-
-
+import { Player } from "@lottiefiles/react-lottie-player";
+import loadingImg from  "../animations/loading.json"
 function Homepage() {
   const history = useHistory();
   const [forgotTab, setForgotTab] = useState(false);
@@ -52,11 +52,16 @@ function Homepage() {
         w="100%"
         m="40px 0 15px 0"
         borderRadius="lg"
-        borderColor="rgb(111, 50, 111)"
+        borderColor="rgb(6, 36, 101)"
         borderWidth="2px"
       >
-        <Text fontSize="5xl" fontFamily="fantasy" fontWeight="500" color="rgb(111, 50, 111)" fontStyle="Bold">
-          Let's Share
+        <Text fontSize="5xl" fontFamily="fantasy" fontWeight="500" color="rgb(6, 36, 101)" fontStyle="Bold">
+          <Player
+            autoplay
+            loop
+            mode="normal"
+            src={{loadingImg}} style={{ width: "300px", height: "300px" }}
+          ></Player>
         </Text>
       </Box>
       <Box display="flex"
@@ -65,7 +70,7 @@ function Homepage() {
         w="100%"
         m="40px 0 15px 0"
         borderRadius="lg"
-        borderColor="rgb(111, 50, 111)"
+        borderColor="rgb(6, 36, 101)"
         borderWidth="2px">
 
         <div className="tabs">
@@ -105,7 +110,7 @@ function Homepage() {
               </>
             }
           </ul>
-          <div id="login-panel"  className="tab-panel">
+          <div id="login-panel" className="tab-panel">
             <Login />
             <small
               className='forget-txt'

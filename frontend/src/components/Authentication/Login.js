@@ -93,6 +93,10 @@ const Login = () => {
           type="email"
           placeholder="Enter Your Email Address"
           onChange={(e) => setEmail(e.target.value)}
+          _focus={
+            {border : "none"}
+          }
+
         />
       </FormControl>
       <FormControl id="password" isRequired>
@@ -106,8 +110,8 @@ const Login = () => {
           />
           <InputRightElement width="4.5rem">
             <Button
-              borderColor="rgb(111, 50, 111)"
-              color="rgb(111, 50, 111)"
+              borderColor="rgb(6, 36, 101)"
+              color="rgb(6, 36, 101)"
               borderWidth="2px"
               h="1.75rem"
               size="sm"
@@ -120,19 +124,17 @@ const Login = () => {
       <Button
         width="100%"
         backgroundColor="black"
-        borderColor="rgb(111, 50, 111)"
-        color="rgb(111, 50, 111)"
+        borderColor="rgb(6, 36, 101)"
+        color="white"
         borderWidth="2px"
         style={{ marginTop: 15 }}
         onClick={submitHandler}
         isLoading={loading}
         _hover={{
-          bg: "rgb(111, 50, 111)", // Background color on hover
-          color: "black", // Text color on hover
+          bg: "rgb(6, 36, 101)", // Background color on hover
         }}
         _active={{
-          bg: "rgb(111, 50, 111)", // Background color on hover
-          color: "black", // Text color when active
+          bg: "rgb(6, 36, 101)", // Background color on hover
         }}
       >
         Login
