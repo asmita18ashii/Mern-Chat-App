@@ -199,17 +199,25 @@ function SideDrawer() {
                 mr={2}
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
+                _focus={{
+                  shadow:"none",
+                  boxShadow:"none"
+                }}
+                _active={{
+                  shadow:"none",
+                  boxShadow:"none"
+                }}
               />
               <Button onClick={handleSearch}>Go</Button>
             </Box>
             {loading ? (
               <ChatLoading />
             ) : (
-              searchResult?.map((user) => (
+              searchResult?.map((u) => (
                 <UserListItem
-                  key={user._id}
-                  user={user}
-                  handleFunction={() => accessChat(user._id)}
+                  key={u._id}
+                  searchUser={u}
+                  handleFunction={() => accessChat(u._id)}
                 />
               ))
             )}

@@ -146,12 +146,12 @@ const Signup = () => {
           placeholder="Enter Your Email Address"
           onChange={(e) => setEmail(e.target.value)}
           _focus={{
-            shadow:"none",
-            boxShadow:"none"
+            shadow: "none",
+            boxShadow: "none"
           }}
           _active={{
-            shadow:"none",
-            boxShadow:"none"
+            shadow: "none",
+            boxShadow: "none"
           }}
         />
       </FormControl>
@@ -161,6 +161,14 @@ const Signup = () => {
           <Input
             type={show ? "text" : "password"}
             placeholder="Enter Password"
+            _focus={{
+              shadow: "none",
+              boxShadow: "none"
+            }}
+            _active={{
+              shadow: "none",
+              boxShadow: "none"
+            }}
             onChange={(e) => setPassword(e.target.value)}
           />
           <InputRightElement width="4.5rem">
@@ -177,6 +185,14 @@ const Signup = () => {
             type={show2 ? "text" : "password"}
             placeholder="Confirm password"
             onChange={(e) => setConfirmpassword(e.target.value)}
+            _focus={{
+              shadow:"none",
+              boxShadow:"none"
+            }}
+            _active={{
+              shadow:"none",
+              boxShadow:"none"
+            }}
           />
           <InputRightElement width="4.5rem">
             <Button h="1.75rem" size="sm" onClick={() => setShow2(!show2)}>
@@ -192,6 +208,14 @@ const Signup = () => {
           p={0.9}
           accept="image/*"
           onChange={(e) => postDetails(e.target.files[0])}
+          _focus={{
+            shadow:"none",
+            boxShadow:"none"
+          }}
+          _active={{
+            shadow:"none",
+            boxShadow:"none"
+          }}
         />
       </FormControl>
       <Button

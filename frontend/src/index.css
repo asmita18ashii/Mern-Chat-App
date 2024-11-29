@@ -19,6 +19,7 @@ input {
 label,
 input {
   color: var(--text-color) !important;
+  background-color: black !important;
 }
 input:focus{
   outline: none !important;

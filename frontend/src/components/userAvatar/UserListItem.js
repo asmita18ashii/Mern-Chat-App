@@ -1,8 +1,7 @@
 import { Avatar } from "@chakra-ui/avatar";
 import { Box, Text } from "@chakra-ui/layout";
 
-const UserListItem = ({user, handleFunction }) => {
-
+const UserListItem = ({searchUser, handleFunction }) => {
   return (
     <Box
       onClick={handleFunction}
@@ -25,14 +24,14 @@ const UserListItem = ({user, handleFunction }) => {
         mr={2}
         size="sm"
         cursor="pointer"
-        name={user.name}
-        src={user.pic}
+        name={searchUser?.name}
+        src={searchUser?.pic}
       />
       <Box>
-        <Text>{user.name}</Text>
+        <Text>{searchUser?.name}</Text>
         <Text fontSize="xs">
           <b>Email : </b>
-          {user.email}
+          {searchUser?.email}
         </Text>
       </Box>
     </Box>
