@@ -52,7 +52,11 @@
 
 
 .tabs {
-    width: 100%;
+    width: 70%;
+    border-radius:lg;
+    border-color:rgb(6, 36, 101);
+    border-width:2px;
+    padding:18px
 }
 
 .tab-list {
@@ -72,7 +76,7 @@
     font-family: 'Rubik', sans-serif;
     cursor: pointer;
     text-align: center;
- 
+
 }
 
 .tab:hover {
@@ -83,7 +87,7 @@
 .tab.active {
     background-color: var(--active-color);
     color: black;
-    border-color:var(--active-color) ;
+    border-color: var(--active-color);
 }
 
 .tab-panel {

@@ -10,7 +10,7 @@ import Signup from "../components/Authentication/Signup";
 import './Homepage.css';
 import ResetPass from "../components/Authentication/ResetPassword";
 import { Player } from "@lottiefiles/react-lottie-player";
-import loadingImg from  "../animations/loading.json"
+import loginImg from "../animations/login.json"
 function Homepage() {
   const history = useHistory();
   const [forgotTab, setForgotTab] = useState(false);
@@ -44,34 +44,32 @@ function Homepage() {
   }, [history]);
 
   return (
-    <Container maxW="xl" centerContent>
+    <Box
+      display="flex"
+      justifyContent="center"
+      w="100%"
+      m="40px 0 15px 0"
+      alignItems={"center"}
+      flexDirection={{ base: "column", md: "row" }}
+    >
+      <Box w="45%" p="10px 0 15px 4%">
+        <Player
+          autoplay
+          loop
+          mode="normal"
+          src={loginImg} style={{ width: "100%", height: "80%", margin: "0px" }}
+        ></Player>
+      </Box>
+
+
       <Box
         display="flex"
-        justifyContent="center"
-        p={3}
-        w="100%"
+        justifyContent="flex-start"
+        w="50%"
         m="40px 0 15px 0"
-        borderRadius="lg"
-        borderColor="rgb(6, 36, 101)"
-        borderWidth="2px"
       >
-        <Text fontSize="5xl" fontFamily="fantasy" fontWeight="500" color="rgb(6, 36, 101)" fontStyle="Bold">
-          <Player
-            autoplay
-            loop
-            mode="normal"
-            src={loadingImg} style={{ width: "300px", height: "300px" }}
-          ></Player>
-        </Text>
-      </Box>
-      <Box display="flex"
-        justifyContent="center"
-        p={3}
-        w="100%"
-        m="40px 0 15px 0"
-        borderRadius="lg"
-        borderColor="rgb(6, 36, 101)"
-        borderWidth="2px">
+
+
 
         <div className="tabs">
           <ul className="tab-list">
@@ -126,8 +124,8 @@ function Homepage() {
           </div>
         </div>
       </Box>
+    </Box>
 
-    </Container>
   );
 }
 

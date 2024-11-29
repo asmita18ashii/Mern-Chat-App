@@ -143,7 +143,7 @@ function SideDrawer() {
           </Button>
         </Tooltip>
         <Text fontSize="2xl" fontFamily="Work sans">
-          Let's Share
+          Let's Spill the Tea
         </Text>
         <div>
           <Menu>
