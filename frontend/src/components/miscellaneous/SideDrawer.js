@@ -137,18 +137,19 @@ function SideDrawer() {
         <Tooltip label="Search Users to chat" hasArrow placement="bottom-end">
           <Button variant="ghost" onClick={onOpen}>
             <i className="fas fa-search"></i>
-            <Text d={{ base: "none", md: "flex" }} px={4}>
+            <Text d={{ base: "none", md: "flex" }} fontFamily="monospace"
+              fontWeight="500" px={4}>
               Search User
             </Text>
           </Button>
         </Tooltip>
-        <Text fontSize="2xl" fontFamily="Work sans">
+        <Text fontSize="2xl" fontFamily="monospace" fontWeight="700">
           Let's Spill the Tea
         </Text>
         <div>
           <Menu>
             <MenuButton p={1}>
-             
+
               <BellIcon fontSize="2xl" m={1} />
             </MenuButton>
             <MenuList pl={2}>
@@ -200,12 +201,12 @@ function SideDrawer() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 _focus={{
-                  shadow:"none",
-                  boxShadow:"none"
+                  shadow: "none",
+                  boxShadow: "none"
                 }}
                 _active={{
-                  shadow:"none",
-                  boxShadow:"none"
+                  shadow: "none",
+                  boxShadow: "none"
                 }}
               />
               <Button onClick={handleSearch}>Go</Button>

@@ -9,8 +9,8 @@ import axios from "axios";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import ProfileModal from "./miscellaneous/ProfileModal";
 import ScrollableChat from "./ScrollableChat";
-// import Lottie from "react-lottie";
-
+import { Player } from "@lottiefiles/react-lottie-player";
+import loadingImg from "../animations/login1.json"
 import io from "socket.io-client";
 import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
 import { ChatState } from "../Context/ChatProvider";
@@ -137,9 +137,8 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
       setTyping(true);
       socket.emit("typing", selectedChat._id);
     }
-    
 
-    console.log(typing)
+
     let lastTypingTime = new Date().getTime();
     var timerLength = 3000;
     setTimeout(() => {
@@ -148,14 +147,16 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
       if (timeDiff >= timerLength && typing) {
         socket.emit("stop typing", selectedChat._id);
         setTyping(false);
+        setIsTyping(false)
+        socket.emit("stop typing", selectedChat._id);
       }
     }, timerLength);
   };
 
   return (
-    <>
+    <Box height={"100%"}>
       {selectedChat ? (
-        <>
+        <div style={{ height: "100%" }}>
           <Text
             fontSize={{ base: "28px", md: "30px" }}
             pb={3}
@@ -174,14 +175,25 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             {messages &&
               (!selectedChat.isGroupChat ? (
                 <>
-                  {getSender(user, selectedChat.users)}
+                  <Text
+                    fontSize={{ base: "17px", md: "10px", lg: "17px" }}
+                    fontFamily="monospace"
+                    fontWeight="500">
+                    {getSender(user, selectedChat.users)}
+                  </Text>
+
                   <ProfileModal
                     user={getSenderFull(user, selectedChat.users)}
                   />
                 </>
               ) : (
                 <>
-                  {selectedChat.chatName.toUpperCase()}
+                  <Text
+                    fontSize={{ base: "17px", md: "10px", lg: "17px" }}
+                    fontFamily="monospace"
+                    fontWeight="500">
+                    {selectedChat.chatName.toUpperCase()}
+                  </Text>
                   <UpdateGroupChatModal
                     fetchMessages={fetchMessages}
                     fetchAgain={fetchAgain}
@@ -195,9 +207,11 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             flexDirection="column"
             justifyContent="flex-end"
             p={3}
-            bg="#E8E8E8"
+            bg="black"
             w="100%"
-            h="100%"
+            h="95%"
+            border={"4px"}
+            borderColor={"rgb(6, 36, 101)"}
             borderRadius="lg"
             overflowY="hidden"
           >
@@ -221,9 +235,14 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
               isRequired
               mt={3}
             >
-              {istyping ? (
+              {istyping && !typing? (
                 <div>
-                  <img src="https://app.lottiefiles.com/animation/4f892c67-fc5e-449a-9a9a-926d53283cc7" alt="loading animtion"/>
+                  <Player
+                    autoplay
+                    loop
+                    mode="normal"
+                    src={loadingImg} style={{ width: "70px", height: "40px", margin: "0px" }}
+                  ></Player>
                 </div>
               ) : (
                 <></>
@@ -237,7 +256,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
               />
             </FormControl>
           </Box>
-        </>
+        </div>
       ) : (
         // to get socket.io on same page
         <Box display="flex" alignItems="center" justifyContent="center" h="100%">
@@ -246,7 +265,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           </Text>
         </Box>
       )}
-    </>
+    </Box>
   );
 };
 

@@ -61,15 +61,12 @@ function Homepage() {
         ></Player>
       </Box>
 
-
       <Box
         display="flex"
         justifyContent="flex-start"
         w="50%"
         m="40px 0 15px 0"
       >
-
-
 
         <div className="tabs">
           <ul className="tab-list">
