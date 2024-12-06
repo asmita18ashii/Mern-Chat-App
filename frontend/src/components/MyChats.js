@@ -25,7 +25,6 @@ const MyChats = ({ fetchAgain }) => {
         },
       };
 
-      console.log(baseURL)
       const { data } = await axios.get(`${baseURL}/chats`, config);
       setChats(data);
     } catch (error) {
@@ -39,6 +38,18 @@ const MyChats = ({ fetchAgain }) => {
       });
     }
   };
+
+  const selectedChatFun = (chat) => {
+    localStorage.setItem('selectedChats', JSON.stringify(chat))
+    setSelectedChat(chat)
+  }
+
+  //restore selectedChat if refreshed
+  useEffect(() => {
+    if (localStorage.getItem("selectedChats"))
+      setSelectedChat(JSON.parse(localStorage.getItem("selectedChats")))
+
+  }, [])
 
   useEffect(() => {
     setLoggedUser(JSON.parse(localStorage.getItem("userInfo")));
@@ -80,7 +91,7 @@ const MyChats = ({ fetchAgain }) => {
             fontFamily="monospace"
             fontWeight="500"
             fontSize={{ base: "17px", md: "10px", lg: "17px" }}
-            rightIcon={<AddIcon  fontFamily="monospace" fontSize={{ base: "17px", md: "10px", lg: "17px" }}/>}
+            rightIcon={<AddIcon fontFamily="monospace" fontSize={{ base: "17px", md: "10px", lg: "17px" }} />}
           >
             New Group Chat
           </Button>
@@ -99,7 +110,7 @@ const MyChats = ({ fetchAgain }) => {
           <Stack overflowY="scroll">
             {chats.map((chat) => (
               <Box
-                onClick={() => setSelectedChat(chat)}
+                onClick={() => selectedChatFun(chat)}
                 cursor="pointer"
                 bg={selectedChat?._id === chat?._id ? "rgb(6, 36, 101)" : "#E8E8E8"}
                 color={selectedChat?._id === chat?._id ? "white" : "black"}

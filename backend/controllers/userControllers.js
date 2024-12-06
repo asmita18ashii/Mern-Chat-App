@@ -40,7 +40,7 @@ const registerUser = asyncHandler(
 //login func
 const authUser = asyncHandler(async (req, res) => {
     console.log();
-    
+
     const { email, password } = req.body
     const user = await User.findOne({ email })
 
@@ -83,8 +83,7 @@ const updateUserPassword = asyncHandler(async (req, res) => {
         // Find the user by email
         const user = await User.findOne({ email: email });
         if (!user) {
-            res.status(404);
-            throw new Error('User not found');
+            res.status(404).json('User not found');
         }
 
         user.password = password; // This will trigger the pre-save hook
@@ -92,9 +91,33 @@ const updateUserPassword = asyncHandler(async (req, res) => {
 
         res.json(updatedUser);
     } else {
-        res.status(400);
-        throw new Error('Email and password are required');
+        res.status(400).json('Email and password are required');
     }
 });
 
-module.exports = { registerUser, authUser, allUsers, updateUserPassword }
+const updateUserProfile = asyncHandler(async (req, res) => {
+    const { email, name, pic,_id } = req.body; 
+    if (!email && !_id) {
+        res.status(400).json('Email is required');
+    }
+
+    const user = await User.findOne({ email: email });
+    if (!user) {
+        res.status(404).json('User not found');
+    }
+
+    if (name) user.name = name;
+    if (pic) user.pic = pic;
+
+    const updatedUser = await user.save();
+
+    res.json({
+        _id: updatedUser._id,
+        name: updatedUser.name,
+        email: updatedUser.email,
+        pic: updatedUser.pic,
+    });
+});
+
+
+module.exports = { registerUser, authUser, allUsers, updateUserPassword,updateUserProfile }

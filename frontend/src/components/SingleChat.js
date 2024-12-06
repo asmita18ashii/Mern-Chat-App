@@ -10,7 +10,10 @@ import { ArrowBackIcon } from "@chakra-ui/icons";
 import ProfileModal from "./miscellaneous/ProfileModal";
 import ScrollableChat from "./ScrollableChat";
 import { Player } from "@lottiefiles/react-lottie-player";
-import loadingImg from "../animations/login1.json"
+import loadingImg from "../animations/login1.json";
+import startChat from "../animations/startChat_1.json"
+
+
 import io from "socket.io-client";
 import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
 import { ChatState } from "../Context/ChatProvider";
@@ -157,7 +160,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     <Box height={"100%"}>
       {selectedChat ? (
         <div style={{ height: "100%" }}>
-          <Text
+          <Box
             fontSize={{ base: "28px", md: "30px" }}
             pb={3}
             px={2}
@@ -201,7 +204,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                   />
                 </>
               ))}
-          </Text>
+          </Box>
           <Box
             display="flex"
             flexDirection="column"
@@ -235,7 +238,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
               isRequired
               mt={3}
             >
-              {istyping && !typing? (
+              {istyping && !typing ? (
                 <div>
                   <Player
                     autoplay
@@ -258,11 +261,22 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
           </Box>
         </div>
       ) : (
-        // to get socket.io on same page
-        <Box display="flex" alignItems="center" justifyContent="center" h="100%">
-          <Text fontSize="3xl" pb={3} fontFamily="Work sans">
-            Click on a user to start chatting
-          </Text>
+        <Box
+          display="flex"
+          border={"4px"}
+          borderColor={"rgb(6, 36, 101)"}
+          borderRadius="lg"
+          alignItems="center"
+          justifyContent="center"
+          h="100%"
+          backgroundColor={"black"}
+        >
+          <Player
+            autoplay
+            loop
+            mode="normal"
+            src={startChat} style={{ width: "100%", height: "100%", margin: "0px" }}
+          ></Player>
         </Box>
       )}
     </Box>
